@@ -1,9 +1,8 @@
-from incremental_approsvd import *
+from .incremental_approsvd import *
 import numpy as np
 import unittest
 
-class TestIncrementalSVD(unittest.TestCase):
-
+class Test_incrementalApproSVD(unittest.TestCase):
   def test_svd(self):
     k = 5
     n1 = 10
@@ -27,4 +26,4 @@ class TestIncrementalSVD(unittest.TestCase):
     np.testing.assert_array_almost_equal(np.dot(np.dot(mat_hk, mat_hk.T), mat_orig), mat_orig)
 
 if __name__ == '__main__':
-  unittest.main()
+    unittest.main()

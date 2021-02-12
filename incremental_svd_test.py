@@ -1,4 +1,4 @@
-from incremental_svd import *
+from .incremental_svd import *
 import numpy as np
 import unittest
 

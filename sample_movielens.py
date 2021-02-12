@@ -1,5 +1,5 @@
-from incremental_svd import *
-from incremental_approsvd import *
+from .incremental_svd import *
+from .incremental_approsvd import *
 from sklearn import cross_validation
 import numpy as np
 
@@ -110,8 +110,8 @@ def crossValidate(ratings):
     rating_pairs = createRatingPairs(ratings_test, mat_SVD, mat_iSVD, c1, c2)
     iSVD_totalRMSE += computeRMSE(rating_pairs)
 
-  print 'Incremental SVD      vs. truncated SVD:', iSVD_totalRMSE / 5.
-  print 'Incremental ApproSVD vs. truncated SVD:', ApproSVD_totalRMSE / 5.
+  print('Incremental SVD      vs. truncated SVD:', iSVD_totalRMSE / 5.)
+  print('Incremental ApproSVD vs. truncated SVD:', ApproSVD_totalRMSE / 5.)
 
 def main():
   # the data has ratings for 943 users on 1682 movies
@@ -121,7 +121,7 @@ def main():
   with open(PATH) as f:
     for i in range(n_ratings):
       line = f.readline()
-      ratings.append(map(int, line.rstrip().split('\t')))
+      ratings.append(list(map(int, line.rstrip().split('\t'))))
   ratings = np.asarray(ratings)
 
   crossValidate(ratings)

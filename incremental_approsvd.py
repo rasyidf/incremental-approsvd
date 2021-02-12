@@ -1,4 +1,4 @@
-from incremental_svd import *
+from .incremental_svd import *
 import numpy as np
 import numpy.linalg as ln
 import sys
@@ -46,13 +46,13 @@ def incrementalApproSVD(mat_b1, mat_b2, c1, c2, k, p1, p2):
 
   # sample c1 columns from B1, and combine them as a matrix C1
   mat_c1 = np.zeros((m, c1))
-  samples = np.random.choice(range(n1), c1, replace=False, p=p1)
+  samples = np.random.choice(list(range(n1)), c1, replace=False, p=p1)
   for t in range(c1):
     mat_c1[:, t] = mat_b1[:, samples[t]] / np.sqrt(c1 * p1[samples[t]])
 
   # sample c2 columns from B2, and combine them as a matrix C2
   mat_c2 = np.zeros((m, c2))
-  samples = np.random.choice(range(n2), c2, replace=False, p=p2)
+  samples = np.random.choice(list(range(n2)), c2, replace=False, p=p2)
   for t in range(c2):
     mat_c2[:, t] = mat_b2[:, samples[t]] / np.sqrt(c2 * p2[samples[t]])
 
